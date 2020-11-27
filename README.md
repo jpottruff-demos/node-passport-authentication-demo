@@ -16,7 +16,7 @@ Demo of how to use PassportJS for authentication that was made following [Brad T
 ## Setup
 Change `views/layout-placeholder.ejs` to `views/layout.ejs` and replace the *font awesome CDN link* with your own kit key. *(Font awesome moved to registered CDN keys in version 5)*
 
-Alternatively, you could also run the project without a *font awesome CDN key*, but you will still need to change the file. Functionality will remain but a couple icons may not show up. 
+Alternatively, you could also run the project without a *font awesome CDN key*, but you'll still need to change the file name. Functionality will remain but a couple icons may not show up. 
 
 ## To run:
 `npm run dev`
