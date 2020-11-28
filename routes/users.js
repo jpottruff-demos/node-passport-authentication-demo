@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 const User = require('../models/User');
 
 //  Login Page
@@ -84,4 +85,26 @@ router.post('/register', (req, res) => {
 
     // console.log(req.body);
 });
+
+// Login Handler (Passport Strategy)
+// NOTE: (req, res, next) at the end is important
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/users/login',
+        failureFlash: true
+    })(req, res, next);
+});
+
+
+
+// Logout Handler 
+// (Passport stuff is pretty easy here)
+// (The rest is just connect-flash)
+router.get('/logout', (req, res) => {
+    req.logout();
+    req.flash('success_msg', 'Logged out');
+    res.redirect('/users/login');
+});
+
 module.exports = router;

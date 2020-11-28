@@ -3,9 +3,13 @@ const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
 
 // Initalize app
 const app = express();
+
+// Passport config
+require('./config/passport')(passport);
 
 // DB config / Connection
 const db = require('./config/keys').MongoURI;
@@ -28,13 +32,23 @@ app.use(session ({
     saveUninitialized: true,
 }));
 
+// Passport Middleware (NOTE: put AFTER the session)
+// Initalizes the local strategy we brough in above
+app.use(passport.initialize());
+app.use(passport.session()); 
+
+
 // Connect Flash (gives access to request.flash)
 app.use(flash());
 
 // Global Variables (For Message Flashes)
 app.use((req, res, next) => {
+    // These are for Connect Flash
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
+
+    // This one is from Passport
+    res.locals.error = req.flash('error');
     next();
 });
 
