@@ -70,7 +70,11 @@ router.post('/register', (req, res) => {
 
                         // 3. Save the User
                         newUser.save()
-                            .then(user => res.redirect('/users/login'))
+                            .then(user => {
+                                // See middleware setup in app.js
+                                req.flash('success_msg', 'You are now registered')
+                                res.redirect('/users/login')
+                            })
                             .catch(err => console.log(err))
                     })
                 );
@@ -78,6 +82,6 @@ router.post('/register', (req, res) => {
         });
     }
 
-    console.log(req.body);
+    // console.log(req.body);
 });
 module.exports = router;

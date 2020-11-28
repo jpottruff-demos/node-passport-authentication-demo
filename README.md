@@ -9,7 +9,8 @@ Demo of how to use PassportJS for authentication that was made following [Brad T
 - [bcryptJS](https://www.npmjs.com/package/bcryptjs) 
 - [EJS](https://ejs.co/) / [Express EJS Layouts](https://www.npmjs.com/package/express-ejs-layouts)
 - [Mongoose](https://mongoosejs.com/)
-- [Connect Flash](https://www.npmjs.com/package/connect-flash)
+- [Connect Flash](https://www.npmjs.com/package/connect-flash) 
+- [express-session](https://www.npmjs.com/package/express-session)
 - [Bootswatch Journal Theme](https://bootswatch.com/journal/)
 - [FontAwesome](https://fontawesome.com/start)
 
